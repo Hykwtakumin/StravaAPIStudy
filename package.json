@@ -1,19 +1,49 @@
 {
+  "name": "strava-api-study",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "hykwtakumin <hykwtakumin@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hykwtakumin/StravaAPIStudy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hykwtakumin/StravaAPIStudy/issues"
+  },
   "scripts": {
-    "clean": "",
-    "build": "",
-    "start": "",
-    "test": ""
+    "postinstall": "",
+    "clean": "rm -rf dist/*",
+    "build": "tsc && npm run browserify",
+    "start": "node dist/server/index.js",
+    "start:dev": "tsc -w & npm run watchify & npm run serve:dev",
+    "test": "",
+    "broserify": "browserify dist/client/index.js --debug -o public/index.js",
+    "watchify": "watchify dist/client/index.js --verbose --debug -o public/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
+    "dateformat": "^3.0.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "express-validator": "^5.2.0",
-    "mongoose": "^5.2.1"
+    "mongoose": "^5.2.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "shortid": "^2.2.10"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/mongodb": "^3.1.1",
+    "@types/node": "^10.5.2",
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "browserify": "^16.2.2",
+    "typescript": "^2.9.2",
+    "watchify": "^3.11.0"
   }
 }
