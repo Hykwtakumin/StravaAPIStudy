@@ -1,0 +1,38 @@
+html
+    head
+        title Index
+        link(rel="stylesheet", href="styles/index.css")
+        script(type='text/javascript', src="https://unpkg.com/axios/dist/axios.min.js")
+        script(type='text/javascript').
+            window.onload = function() {
+                var loginButton = document.getElementById("signIn");
+                if (loginButton != null) {
+                    loginButton.addEventListener('click', function (ev) {
+                        console.log("clicked!");
+                        axios.get(
+                            "https://www.strava.com/oauth/authorize",
+                            {
+                                params: {
+                                    client_id: "26773",
+                                    redirect_uri: "localhost:3000/",
+                                    response_type: "code",
+                                    approval_prompt: "auto",
+                                    scope: "public"
+                                }
+                            }).then(function (response) {
+                            console.dir(response);
+                        })
+                            .catch(function (error) {
+                                console.dir(error);
+                            });
+                    });
+                } else {
+                    console.log("button is null")
+                }
+            }
+        script(src="index.js", type="text/javascript")
+    body
+        div#root
+            h1!= message
+            a#signInLink(href="https://www.strava.com/oauth/authorize?client_id=26773?response_type=code?approval_prompt=auto?scope=public?redirect_uri=https://strava-api-study.now.sh/") ログイン
+            input#signIn(type="button", value="Sign in to STRAVA")

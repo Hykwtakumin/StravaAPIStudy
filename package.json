@@ -14,11 +14,12 @@
   "scripts": {
     "postinstall": "",
     "clean": "rm -rf dist/*",
-    "build": "tsc && npm run browserify",
+    "build": "npm install && tsc && npm run browserify",
     "start": "node dist/server/index.js",
     "start:dev": "tsc -w & npm run watchify & npm run serve:dev",
+    "serve": "node dist/server/app.js",
     "test": "",
-    "broserify": "browserify dist/client/index.js --debug -o public/index.js",
+    "browserify": "browserify dist/client/index.js --debug -o public/index.js",
     "watchify": "watchify dist/client/index.js --verbose --debug -o public/index.js"
   },
   "dependencies": {
@@ -32,6 +33,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.2.0",
     "mongoose": "^5.2.1",
+    "pug": "^2.0.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "shortid": "^2.2.10"
